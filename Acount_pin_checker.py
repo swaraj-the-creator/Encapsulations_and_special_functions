@@ -38,7 +38,7 @@ class Account:
     def __str__(self):
         return f"Account holder: {self.owner}"
 
-name = input("Enter name of account holder: ")
+name = input("\nEnter name of account holder: ")
 pin = random.randint(1000, 9999)
 
 my_account = Account(name, pin)
