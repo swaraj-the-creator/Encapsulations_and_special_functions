@@ -58,3 +58,4 @@ while cu_se <= cu:
         break
     else:
         continue
+print("Customers served : ",cu_se)
