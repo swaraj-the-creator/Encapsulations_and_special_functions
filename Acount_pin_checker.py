@@ -1,5 +1,5 @@
 import random
-cu = input("Enter number of customers : ")
+cu = input("\nEnter number of customers : ")
 cu_se = 0
 while cu_se <= cu:
     class Account:
@@ -58,4 +58,4 @@ while cu_se <= cu:
         break
     else:
         continue
-print("Customers served : ",cu_se)
+print("\nCustomers served : ",cu_se)
