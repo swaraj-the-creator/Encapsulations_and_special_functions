@@ -1,61 +1,64 @@
 import random
-cu = input("\nEnter number of customers : ")
-cu_se = 0
-while cu_se <= cu:
-    class Account:
-        def __init__(self, owner, pin):
-            self.owner = owner
-            self.__pin = str(pin)
+try:
+    cu = int(input("\nEnter number of customers : "))
+    cu_se = 0
+    while cu_se <= cu:
+        class Account:
+            def __init__(self, owner, pin):
+                self.owner = owner
+                self.__pin = str(pin)
 
-        def show_pin_status(self):
-            print("PIN is safely stored.")
+            def show_pin_status(self):
+                print("PIN is safely stored.")
 
-        def set_pin(self, new_pin):
-            new_pin = str(new_pin)
+            def set_pin(self, new_pin):
+                new_pin = str(new_pin)
 
-            if len(new_pin) == 4 and new_pin.isdigit():
-                self.__pin = new_pin
-                print("PIN updated successfully.")
-                return True
-
-            print("Invalid PIN. PIN must be exactly 4 digits.")
-            return False
-
-        def check_pin(self):
-            for attempt in range(5):
-                entered_pin = input("Enter the PIN: ")
-
-                if entered_pin == self.__pin:
-                    print("Access granted.")
+                if len(new_pin) == 4 and new_pin.isdigit():
+                    self.__pin = new_pin
+                    print("PIN updated successfully.")
                     return True
 
-                chances_left = 4 - attempt
-                print("Access denied.")
-                if chances_left:
-                    print(f"Number of chances left: {chances_left}")
+                print("Invalid PIN. PIN must be exactly 4 digits.")
+                return False
 
-            print("System locked.")
-            return False
+            def check_pin(self):
+                for attempt in range(5):
+                    entered_pin = input("Enter the PIN: ")
 
-        def __str__(self):
-            return f"Account holder: {self.owner}"
+                    if entered_pin == self.__pin:
+                        print("Access granted.")
+                        return True
 
-    name = input("\nEnter name of account holder: ")
-    pin = random.randint(1000, 9999)
+                    chances_left = 4 - attempt
+                    print("Access denied.")
+                    if chances_left:
+                        print(f"Number of chances left: {chances_left}")
 
-    my_account = Account(name, pin)
-    print("Hint for pin: ",pin - 131)
-    print(my_account)
-    my_account.show_pin_status()
+                print("System locked.")
+                return False
 
-    if my_account.check_pin():
-        new_pin = input("Enter new PIN: ")
-        my_account.set_pin(new_pin)
-        my_account.check_pin()
-    cu_se = cu_se + 1
-    y_n = input("Do you want to continue? (yes/no): ")
-    if y_n != "yes" or y_n != "Yes" or y_n != "YES":
-        break
-    else:
-        continue
-print("\nCustomers served : ",cu_se)
+            def __str__(self):
+                return f"Account holder: {self.owner}"
+
+        name = input("\nEnter name of account holder: ")
+        pin = random.randint(1000, 9999)
+
+        my_account = Account(name, pin)
+        print("Hint for pin: ",pin - 131)
+        print(my_account)
+        my_account.show_pin_status()
+
+        if my_account.check_pin():
+            new_pin = input("Enter new PIN: ")
+            my_account.set_pin(new_pin)
+            my_account.check_pin()
+        cu_se = cu_se + 1
+        y_n = input("Do you want to continue? (yes/no): ")
+        if y_n != "yes" or y_n != "Yes" or y_n != "YES":
+            break
+        else:
+            continue
+    print("\nCustomers served : ",cu_se)
+except ValueError:
+    print("!!Incorrect Value!!")
