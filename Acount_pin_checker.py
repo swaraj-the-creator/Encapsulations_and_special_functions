@@ -59,6 +59,6 @@ try:
             continue
         else:
             break
-    print("\nCustomers served : ",cu_se," out of ",cu)
+    print("\nCustomers served ",cu_se," out of ",cu)
 except ValueError:
     print("!!Incorrect Value!!")
