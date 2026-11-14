@@ -55,10 +55,10 @@ try:
             my_account.check_pin()
         cu_se = cu_se + 1
         y_n = input("Do you want to continue? (yes/no): ")
-        if y_n != "yes" or y_n != "Yes" or y_n != "YES":
-            break
-        else:
+        if y_n == "yes" or y_n == "Yes" or y_n == "YES":
             continue
-    print("\nCustomers served : ",cu_se)
+        else:
+            break
+    print("\nCustomers served : ",cu_se," out of ",cu)
 except ValueError:
     print("!!Incorrect Value!!")
